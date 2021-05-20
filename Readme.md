@@ -1,1 +1,1 @@
-## This is a mern app simple test file for fbw41
+More basic MERN APP, where we are learning how to connect full website but also uploading photos, deleting, updating and more stuff

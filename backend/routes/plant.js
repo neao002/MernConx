@@ -20,7 +20,7 @@ router.post("/add", (req, res) => {
       name: req.body.name,
       style: req.body.style,
       color: req.body.color,
-      added_by: userId.toString(),
+      // added_by: userId.toString(),
     });
     newPlant.save((err, doc) => {
       res.json("A new Plant has been added!");
@@ -33,4 +33,21 @@ router.get("/delete/:id", (req, res) => {
     res.json("One plant data has been deleted!");
   });
 });
+
+//updating
+
+router.post("/update", (req, res) => {
+  console.log(req.body);
+  Plant.findByIdAndUpdate(req.body.id, req.body, (err, doc) => {
+    res.json("Plant Data just updated!");
+    console.log(req.body.id);
+  });
+});
+
+router.get("/update/:id", (req, res) => {
+  Plant.findById(req.params.id, (err, plant) => {
+    res.json(plant);
+  });
+});
+
 module.exports = router;

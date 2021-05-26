@@ -5,10 +5,10 @@ const plantSchema = new Schema({
   name: String,
   style: String,
   color: String,
-  added_by: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
-  },
+  // added_by: {
+  //   type: Schema.Types.ObjectId,
+  //   ref: "User",
+  // },
 });
 
 // declare Schema as a model

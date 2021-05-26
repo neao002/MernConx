@@ -1,6 +1,7 @@
 import { Row, Col, Form, Button } from "react-bootstrap";
 import { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function Add_new() {
   const [user, setUserName] = useState({
@@ -58,10 +59,11 @@ function Add_new() {
               }
             />
           </Form.Group>
-
-          <Button variant="danger" type="submit">
-            Create
-          </Button>
+          <Link to="/all_plant">
+            <Button variant="danger" type="submit">
+              Create
+            </Button>
+          </Link>
         </Form>
       </Col>
     </Row>

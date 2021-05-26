@@ -6,35 +6,29 @@ function Add_new() {
   const [data, setName] = useState({
     name: "",
     style: "",
-    color: " ",
+    color: "",
   });
-  const [picture, setPicture] = useState();
 
   const add = (event) => {
     event.preventDefault();
-    const getData = new FormData();
-    getData.append("name", data.name);
-    getData.append("style", data.style);
-    getData.append("color", data.color);
-    console.log(picture);
-    getData.append("photoPicSelect", picture);
+    const createPlant = JSON.stringify(data);
+    console.log(createPlant);
 
     const config = {
       headers: {
-        "content-type": "multipart/form-data",
+        "Content-Type": "application/json; charset=UTF-8",
+        Accept: "Token",
+        "Access-Control-Allow-Origin": "*",
       },
     };
 
     axios
-      .post("http://localhost:5000/plant/add", getData, config)
+      .post("http://localhost:5000/plant/add", createPlant, config)
       .then((response) => {
         console.log(response.data);
       });
   };
 
-  const getPic = (event) => {
-    setPicture(event.target.files[0]);
-  };
   return (
     <Row>
       <Col>
@@ -61,14 +55,7 @@ function Add_new() {
               onChange={(e) => setName({ ...data, color: e.target.value })}
             />
           </Form.Group>
-          <Form.Group>
-            <Form.File
-              id="exampleFormControlFile1"
-              label="Upload a Picture"
-              onChange={getPic}
-              name="photoPicSelect"
-            />
-          </Form.Group>
+
           <Button variant="danger" type="submit">
             Add to Garden
           </Button>

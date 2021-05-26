@@ -5,7 +5,10 @@ const plantSchema = new Schema({
   name: String,
   style: String,
   color: String,
-  photoPicSelect: String,
+  added_by: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+  },
 });
 
 // declare Schema as a model

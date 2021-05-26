@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const plantRouter = require("./routes/plant");
+const plantUser = require("./routes/user");
 const cors = require("cors");
 require("dotenv").config();
 // Mongodb connection using mongoose module
@@ -27,6 +28,8 @@ app.post("/user/data", (req, res) => {
     country: "germany",
   });
 });
+
+app.use("/user", plantUser);
 
 app.listen(PORT, () => {
   console.log("Backend is running on port" + PORT);

@@ -6,6 +6,7 @@ import NavTop from "./components/Nav_top";
 import AllPlant from "./components/All_plant";
 import AddNew from "./components/Add_new";
 import User from "./components/user";
+import Searchall from "./components/searchplant";
 
 function App() {
   return (
@@ -23,8 +24,11 @@ function App() {
             <Route path="/all_plant">
               <AllPlant />
             </Route>
+            <Route path="/user">
+              <User />
+            </Route>
             <Route>
-              <User path="/user" />
+              <Searchall path="searchplants" />
             </Route>
           </Switch>
         </Container>

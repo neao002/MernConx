@@ -1,19 +1,35 @@
 const router = require("express").Router();
+const { populate } = require("../models/Plant");
 const Plant = require("../models/Plant");
 const User = require("../models/User");
 
 router.get("/add", (req, res) => {
+  const name = req.params;
   Plant.find((err, docs) => {
     res.json(docs);
-  })
-    .populate("added_by")
+  }).populate("added_by");
+  // .populate("added_by")
 
-    // reverse and limit
-    // .sort({ _id: -1 })
-    // .limit(2);
-    // search engine
+  // // reverse and limit
+  // // .sort({ _id: -1 })
+  // // .limit(2);
+  // // search engine
+  // .where("name")
+  // .equals("tomaes");
+});
+
+// router.get("/search", (req, res) => {
+//   Plant.find((err, plants) => {
+//     res.json(plants);
+//   }).populate("added_by");
+// });
+
+router.get("/add/:name", (req, res) => {
+  Plant.find((err, plants) => {
+    res.json(plants);
+  })
     .where("name")
-    .equals("tomaes");
+    .equals(req.params.name);
 });
 
 router.post("/add", (req, res) => {

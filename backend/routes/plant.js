@@ -5,7 +5,15 @@ const User = require("../models/User");
 router.get("/add", (req, res) => {
   Plant.find((err, docs) => {
     res.json(docs);
-  }).populate("added_by");
+  })
+    .populate("added_by")
+
+    // reverse and limit
+    // .sort({ _id: -1 })
+    // .limit(2);
+    // search engine
+    .where("name")
+    .equals("tomaes");
 });
 
 router.post("/add", (req, res) => {
